@@ -1,0 +1,5 @@
+Note: the network worked satisfactorily for the coil (without housing) before implementing scaling between -1 and 1.
+|
+ \
+   >  To revert back to this, remove the code for scaling (MinMaxScaler) and reintroduce the complex loss function (and don't include ffe layer):
+       total_loss = 5e4 * torch.pow(loss_BC, 2) + 1.0 * (loss_U - 1550*loss_W) + 1.0 * torch.exp(-(loss_U - loss_W))
